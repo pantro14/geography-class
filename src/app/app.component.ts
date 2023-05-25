@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'geography-class';
-  theme: string = 'dark';
+  theme = 'dark';
 
   handleTheme(theme: string) {
     this.theme = theme;

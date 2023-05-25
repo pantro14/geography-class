@@ -1,0 +1,19 @@
+schema:
+  - src/graphql/schema.graphql
+documents:
+  - src/graphql/documents/**/*.graphql
+generates:
+  src/graphql/auto-generated.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-apollo-angular
+      - fragment-matcher
+    config:
+      addExplicitOverride: true,
+      declarationKind: interface
+      apolloClientVersion: 3
+      apolloAngularVersion: 4
+      immutableTypes: false
+      namedClient: countries
+      operationResultSuffix: Result
