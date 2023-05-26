@@ -1,1 +1,18 @@
-<p>continents works!</p>
+<div class="dark:bg-neutral px-5 py-12 h-screen">
+  <span class="flex text-xl font-bold pb-4">
+    Continents
+  </span>
+  <ng-container *ngrxLet="
+    continents$ as continents;
+    suspenseTpl: loading;
+    error as error;
+">
+    <ng-container *ngFor="let continent of continents">
+      <div>{{continent.name}}</div>
+    </ng-container>
+    <p *ngIf="error">I am an error</p>
+  </ng-container>
+  <ng-template #loading>
+    <app-shimmer></app-shimmer>
+  </ng-template>
+</div>

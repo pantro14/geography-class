@@ -1,24 +1,23 @@
 import {Component, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {GeoService} from '../../services/geo-service.service';
+import {FacadeService} from '../../services/facade/facade.service';
+import {LetDirective} from '@ngrx/component';
+import {ShimmerComponent} from '../../common/shimmer/shimmer.component';
 
 @Component({
   selector: 'app-continents',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, LetDirective, ShimmerComponent],
   templateUrl: './continents.component.html',
   styles: [
   ]
 })
 export class ContinentsComponent implements OnInit {
+  readonly continents$ = this.facade.continents$;
 
-  constructor(private geoService: GeoService) {
+  constructor(private facade: FacadeService) {
   }
   ngOnInit() {
-    this.geoService.fetchContinents().subscribe({
-      next: (continentQuery) => console.log(continentQuery.data.continents),
-      error: (error) => console.error('error:', error),
-      complete: () => console.info('complete')
-    })
+    this.facade.fetchContinents();
   }
 }
