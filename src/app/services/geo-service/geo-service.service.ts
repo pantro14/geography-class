@@ -3,8 +3,8 @@ import {HttpClient} from '@angular/common/http';
 import {Apollo} from 'apollo-angular';
 import {HttpLink} from 'apollo-angular/http';
 import {ApolloQueryResult, InMemoryCache} from '@apollo/client/core';
-import {Observable} from 'rxjs';
-import {CountriesNS} from '../../graphql/namespace';
+import {Observable, switchMap, throwError} from 'rxjs';
+import {CountriesNS} from '../../../graphql/namespace';
 
 @Injectable({
   providedIn: 'root'
