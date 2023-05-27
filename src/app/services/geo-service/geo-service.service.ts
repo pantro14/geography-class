@@ -11,12 +11,27 @@ import {CountriesNS} from '../../../graphql/namespace';
 })
 export class GeoService {
   constructor(readonly http: HttpClient, private apollo: Apollo) {
-    if (!this.apollo.use('countries')) {
+    if (!this.apollo.use('geography-class')) {
       const link = new HttpLink(http).create({
         uri: 'https://countries.trevorblades.com/graphql',
       });
-      apollo.createNamed('countries', {
-        cache: new InMemoryCache(),
+      apollo.createNamed('geography-class', {
+        cache: new InMemoryCache({
+          typePolicies: {
+            Continent: {
+              keyFields: ["code"],
+            },
+            Query: {
+              fields: {
+                continents: {
+                  merge(existing){
+                    return existing
+                  }
+                }
+              }
+            }
+          }
+        }),
         link,
       });
     }

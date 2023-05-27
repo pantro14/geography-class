@@ -1,5 +1,6 @@
 query ContinentsQuery {
   continents {
+    __typename
     code
     name
   }

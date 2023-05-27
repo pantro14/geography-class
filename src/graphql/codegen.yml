@@ -15,5 +15,5 @@ generates:
       apolloClientVersion: 3
       apolloAngularVersion: 4
       immutableTypes: false
-      namedClient: countries
+      namedClient: geography-class
       operationResultSuffix: Result

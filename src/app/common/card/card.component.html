@@ -1,0 +1,12 @@
+<div class="border border-blue-300 shadow rounded-md p-4 w-full mx-auto">
+  <div class="flex space-x-4">
+    <!-- rounded image -->
+    <ng-content select="[profile]"></ng-content>
+    <div class="flex-1 space-y-6 py-1">
+      <ng-content select="[title]"></ng-content>
+      <div class="space-y-3">
+        <ng-content select="[details]"></ng-content>
+      </div>
+    </div>
+  </div>
+</div>

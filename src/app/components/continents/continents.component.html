@@ -7,12 +7,25 @@
     suspenseTpl: loading;
     error as error;
 ">
-    <ng-container *ngFor="let continent of continents">
-      <div>{{continent.name}}</div>
-    </ng-container>
+    <div class="flex flex-wrap mx-auto space-y-1">
+      <ng-container *ngFor="let continent of continents">
+        <div class="sm:w-1/2 md:w-1/4 w-full sm:pr-3 pb-2 md:pb-0">
+          <ng-container *ngTemplateOutlet="continentCards; context:{continent: continent}"/>
+        </div>
+      </ng-container>
+    </div>
     <p *ngIf="error">I am an error</p>
   </ng-container>
   <ng-template #loading>
     <app-shimmer></app-shimmer>
   </ng-template>
 </div>
+<ng-template #continentCards let-continent="continent">
+  <a href="/continents/{{continent.code}}">
+    <app-card>
+      <div profile class="rounded-full bg-slate-700 h-10 w-10"></div>
+      <div title class="text-lg font-semibold h-10 w-full">{{continent.code}}</div>
+      <div title class="text-sm w-full">{{continent.name}}</div>
+    </app-card>
+  </a>
+</ng-template>

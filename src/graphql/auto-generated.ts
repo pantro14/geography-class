@@ -100,7 +100,7 @@ export type ContinentsQueryQueryVariables = Exact<{ [key: string]: never }>;
 export type ContinentsQueryQueryResult = {
   __typename?: 'Query';
   continents?: Array<{
-    __typename?: 'Continent';
+    __typename: 'Continent';
     code?: string | null;
     name?: string | null;
   } | null> | null;
@@ -109,6 +109,7 @@ export type ContinentsQueryQueryResult = {
 export const ContinentsQueryDocument = gql`
   query ContinentsQuery {
     continents {
+      __typename
       code
       name
     }
@@ -123,7 +124,7 @@ export class ContinentsQueryGQL extends Apollo.Query<
   ContinentsQueryQueryVariables
 > {
   override document = ContinentsQueryDocument;
-  override client = 'countries';
+  override client = 'geography-class';
   constructor(apollo: Apollo.Apollo) {
     super(apollo);
   }

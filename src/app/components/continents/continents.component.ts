@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 import {FacadeService} from '../../services/facade/facade.service';
 import {LetDirective} from '@ngrx/component';
 import {ShimmerComponent} from '../../common/shimmer/shimmer.component';
+import {CardComponent} from '../../common/card/card.component';
+import {RouterOutlet} from '@angular/router';
 
 @Component({
   selector: 'app-continents',
   standalone: true,
-  imports: [CommonModule, LetDirective, ShimmerComponent],
+  imports: [CommonModule, LetDirective, ShimmerComponent, CardComponent],
   templateUrl: './continents.component.html',
   styles: [
   ]
